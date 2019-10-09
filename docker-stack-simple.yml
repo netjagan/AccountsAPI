@@ -1,0 +1,17 @@
+version: "3"
+services:
+
+  accountsapi:
+    image: accountsapi:0.1.0
+    ports:
+      - 9990:8888
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure	
+networks:
+  frontend:
